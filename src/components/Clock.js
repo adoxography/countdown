@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Number from './Number';
 import { units } from '../util';
+import './Clock.css';
 
 const { SECOND, MINUTE, HOUR } = units;
 

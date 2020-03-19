@@ -1,6 +1,6 @@
 .segmented-number {
     position: relative;
-    display: inline-block;
+    display: flex;
     margin: 15px;
     border-radius: 20px;
     transition: background-color .15s ease-in-out;

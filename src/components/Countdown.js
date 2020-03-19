@@ -1,6 +1,6 @@
 import React from 'react';
 import Clock from './Clock';
-import { units } from '../util';
+import { scaleToWindow, units } from '../util';
 import './Countdown.css';
 
 /**
@@ -11,11 +11,19 @@ class Countdown extends React.Component {
   constructor(props) {
     super(props);
 
+    this.el = React.createRef(null);
+
     this.state = {
       time: 0,
       running: false,
       interval: null
     };
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', e => {
+      scaleToWindow(this.el.current, 1, true);
+    });
   }
 
   componentWillUnmount() {
@@ -130,7 +138,7 @@ class Countdown extends React.Component {
     const { time, running } = this.state;
 
     return (
-      <div className="countdown">
+      <div className="countdown" ref={this.el}>
         <Clock
           time={time}
           disabled={running}

@@ -28,6 +28,8 @@ function createWindow() {
       : `file://${path.join(__dirname, '../build/index.html')}`
   );
 
+  mainWindow.setAspectRatio(609/212);
+
   // Ensure app is always on top, aside for truly floating apps like Spotlight
   mainWindow.setAlwaysOnTop(true, 'floating', 1);
 

@@ -15,7 +15,7 @@ Set the time by clicking on the desired time unit (i.e. hours, minutes, or secon
 `Countdown` is an [electron](https://github.com/electron/electron) app that packages up an underlying [react](https://github.com/facebook/react) app. Overkill? Definitely. But I didn't want to go about learning Swift, and I'd been wanting to play around with electron/react.
 
 ## To do
-- [ ] Make the app resizable
+- [x] Make the app resizable
 - [ ] Allow time entry with number keys
 - [ ] Make the `Clock` component adhere to the [ARIA timer specification](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/ARIA_timer_role)
 - [ ] Make available for Windows?
