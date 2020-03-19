@@ -1,0 +1,37 @@
+.segmented-number {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    border-radius: 20px;
+}
+
+.segmented-number:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.segmented-number:hover[disabled] {
+    background-color: inherit;
+}
+
+.segmented-number:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    outline: 0;
+}
+
+.segmented-number:not(:last-child):before,
+.segmented-number:not(:last-child):after {
+    content: '';
+    position: absolute;
+    right: -20px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary);
+}
+
+.segmented-number::before {
+    top: 40px;
+}
+
+.segmented-number::after {
+    top: 90px;
+}

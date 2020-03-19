@@ -1,0 +1,13 @@
+.segmented-digit {
+    margin: 10px;
+    display: inline-block;
+}
+
+.segment {
+    transition: .2s ease-in-out;
+    fill: var(--primary);
+}
+
+.segment[disabled] {
+    fill: rgba(125, 125, 125, 0.25);
+}

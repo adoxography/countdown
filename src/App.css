@@ -1,38 +1,94 @@
-.App {
-  text-align: center;
+:root {
+    --primary: #4FD1C5;
+    --success: #38A169;
+    --success-light: #48BB78;
+    --danger: #E53E3E;
+    --danger-light: #F56565;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    -webkit-app-region: drag;
+    height: 100vh;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+    -webkit-app-region: no-drag;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.clock {
+    display: inline-block;
 }
 
-.App-link {
-  color: #61dafb;
+.close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 8px;
+    font-size: 24px;
+    border-radius: 100%;
+    border: none;
+    background-color: #ffffff20;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.close-button:hover {
+    color: var(--danger-light);
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #00000080;
+    border-radius: 2rem;
+    width: 100%;
+    height: 100%;
+}
+
+.button {
+    transition: .1s ease-in-out;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.control-buttons .button {
+    font-size: 20px;
+    margin-right: 8px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+.button.is-green {
+    background-color: var(--success);
+}
+.button.is-green:hover {
+    background-color: var(--success-light);
+}
+
+.button.is-red {
+    background-color: var(--danger);
+}
+.button.is-red:hover {
+    background-color: var(--danger-light);
+}
+
+.button[disabled],
+.button[disabled]:hover {
+    background-color: #bbb;
+    color: rgba(0, 0, 0, 0.5);
 }
