@@ -1,4 +1,5 @@
 # Countdown
+![Countdown screenshot](/docs/screenshot.png)
 
 ## What is this for?
 I deliver workshops for [Canada Learning Code](https://canadalearningcode.ca), and I often find myself needing a timer for the work sessions within the workshops. All of the MacOS timers I've found so far either won't work on top of a full-screen app, or are glued to the top bar. This app overcomes both of these limitations.
