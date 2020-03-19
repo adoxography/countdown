@@ -5,6 +5,12 @@ import { units } from '../util';
 
 const { SECOND, MINUTE, HOUR } = units;
 
+/**
+ * Splits a time in seconds into its hours, minutes, and remaining seconds.
+ *
+ * @param totalSeconds  The seconds to partition
+ * @return  An object with `hours`, `minutes`, and `seconds` keys
+ */
 const splitSeconds = totalSeconds => {
   const seconds = totalSeconds % 60;
   totalSeconds = Math.floor(totalSeconds / 60);
@@ -15,6 +21,15 @@ const splitSeconds = totalSeconds => {
   return { hours, minutes, seconds };
 };
 
+/**
+ * Displays a clock, and emits events from its member components.
+ *
+ * @param time       The time to display, in seconds
+ * @param disabled   True if the component should listen for events; false
+ *                   otherwise
+ * @param onWheel    Handler for wheel events
+ * @param onKeyDown  Handler for keyDown events
+ */
 const Clock = ({ time, disabled, onWheel, onKeyDown }) => {
   const { hours, minutes, seconds } = splitSeconds(time);
   const refs = [React.useRef(null), React.useRef(null), React.useRef(null)];
