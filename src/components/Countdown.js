@@ -19,10 +19,10 @@ class Countdown extends React.Component {
   }
 
   handleWheel = (e, unit) => {
-    if (e.deltaY < 0) {  // Scrolling up
-      this.increment(unit)
-    } else if (e.deltaY > 0) {  // Scrolling down
+    if (e.deltaY < 0) {  // Scrolling down
       this.decrement(unit);
+    } else if (e.deltaY > 0) {  // Scrolling up
+      this.increment(unit)
     }
   }
 
