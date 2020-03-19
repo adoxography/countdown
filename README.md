@@ -5,7 +5,7 @@
 I deliver workshops for [Canada Learning Code](https://canadalearningcode.ca), and I often find myself needing a timer for the work sessions within the workshops. All of the MacOS timers I've found so far either won't work on top of a full-screen app, or are glued to the top bar. This app overcomes both of these limitations.
 
 ## How do I use it?
-Download the app from the [releases](https://github.com/adoxography/countdown/releases) page. You can set the time by hovering over the desired time unit (i.e. hours, minutes, or seconds) and scrolling. You can also click on the unit and adjust the time using the up and down arrow keys. Press "start" to kick off the timer!
+Download the app from the [releases](https://github.com/adoxography/countdown/releases) page. Set the time by clicking on the desired time unit (i.e. hours, minutes, or seconds) and use the up and down arrow keys to add or remove time. Press "start" to kick off the timer!
 
 ## How does it work?
 `Countdown` is an [electron](https://github.com/electron/electron) app that packages up an underlying [react](https://github.com/facebook/react) app. Overkill? Definitely. But I didn't want to go about learning Swift, and I'd been wanting to play around with electron/react.
