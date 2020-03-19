@@ -27,3 +27,7 @@ You can set the time by hovering over the desired time unit (i.e. hours, minutes
 
 ## License
 [MIT](/LICENSE)
+
+## Acknowledgements
+- SVGs for the digits were taken from [7 Segment Digital Clock - HTML + CSS + JS](https://www.youtube.com/watch?v=GlzDSCErJXs)(video)
+- [How to build an Electron app using Create React App and Electron Builder](https://www.codementor.io/@randyfindley/how-to-build-an-electron-app-using-create-react-app-and-electron-builder-ss1k0sfer)
