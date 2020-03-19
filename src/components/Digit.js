@@ -1,4 +1,5 @@
 import React from 'react';
+import { render, screen } from '@testing-library/react';
 import './Digit.css';
 
 const segmentSettings = [
@@ -30,14 +31,14 @@ const Digit = ({ value }) => {
         </defs>
       </svg>
 
-      <svg xmlns="https://www.w3.org/2000/svg" xmlnsXlink="https://www.w3.org/1999/xlink" width="65" height="120" viewBox="0 0 260 480">
-        <use className="segment" disabled={!settings[0]} xlinkHref="#unit-h" x="30" y="0"></use>
-        <use className="segment" disabled={!settings[1]} xlinkHref="#unit-v" x="220" y="30"></use>
-        <use className="segment" disabled={!settings[2]} xlinkHref="#unit-v" x="220" y="250"></use>
-        <use className="segment" disabled={!settings[3]} xlinkHref="#unit-h" x="30" y="440"></use>
-        <use className="segment" disabled={!settings[4]} xlinkHref="#unit-v" x="0" y="250"></use>
-        <use className="segment" disabled={!settings[5]} xlinkHref="#unit-v" x="0" y="30"></use>
-        <use className="segment" disabled={!settings[6]} xlinkHref="#unit-h" x="30" y="220"></use>
+      <svg data-testid="segmented-digit" xmlns="https://www.w3.org/2000/svg" xmlnsXlink="https://www.w3.org/1999/xlink" width="65" height="120" viewBox="0 0 260 480">
+        <use className="segment" data-testid="segment-a" disabled={!settings[0]} xlinkHref="#unit-h" x="30" y="0"></use>
+        <use className="segment" data-testid="segment-b" disabled={!settings[1]} xlinkHref="#unit-v" x="220" y="30"></use>
+        <use className="segment" data-testid="segment-c" disabled={!settings[2]} xlinkHref="#unit-v" x="220" y="250"></use>
+        <use className="segment" data-testid="segment-d" disabled={!settings[3]} xlinkHref="#unit-h" x="30" y="440"></use>
+        <use className="segment" data-testid="segment-e" disabled={!settings[4]} xlinkHref="#unit-v" x="0" y="250"></use>
+        <use className="segment" data-testid="segment-f" disabled={!settings[5]} xlinkHref="#unit-v" x="0" y="30"></use>
+        <use className="segment" data-testid="segment-g" disabled={!settings[6]} xlinkHref="#unit-h" x="30" y="220"></use>
       </svg>
     </div>
   );

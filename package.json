@@ -22,12 +22,12 @@
   "scripts": {
     "start-react": "rescripts start",
     "build-react": "rescripts build",
-    "test-react": "rescripts test",
+    "test": "rescripts test",
     "start-electron": "electron .",
     "postinstall": "electron-builder install-app-deps",
     "preelectron-pack": "yarn build-react",
     "electron-pack": "electron-builder -m",
-    "dev": "concurrently \"BROWSER=none yarn start-react\" \"wait-on http://localhost:3000 && yarn start-electron\""
+    "start": "concurrently \"BROWSER=none yarn start-react\" \"wait-on http://localhost:3000 && yarn start-electron\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -66,6 +66,7 @@
     "electron": "^8.1.1",
     "electron-builder": "^22.4.1",
     "prop-types": "^15.7.2",
+    "react-test-renderer": "^16.13.0",
     "wait-on": "^4.0.1"
   }
 }
