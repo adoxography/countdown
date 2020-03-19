@@ -5,7 +5,11 @@
 I deliver workshops for [Canada Learning Code](https://canadalearningcode.ca), and I often find myself needing a timer for the work sessions within the workshops. All of the MacOS timers I've found so far either won't work on top of a full-screen app, or are glued to the top bar. This app overcomes both of these limitations.
 
 ## How do I use it?
-Download the app from the [releases](https://github.com/adoxography/countdown/releases) page. Set the time by clicking on the desired time unit (i.e. hours, minutes, or seconds) and use the up and down arrow keys to add or remove time. Press "start" to kick off the timer!
+### Installation
+Download the app from the [releases](https://github.com/adoxography/countdown/releases) page. The app isn't signed, so you can try running it anyway by following [these instructions](https://support.apple.com/en-ca/guide/mac-help/mh40616/mac). If that doesn't work, see the instructions below on how to build it yourself.
+
+### Usage
+Set the time by clicking on the desired time unit (i.e. hours, minutes, or seconds) and use the up and down arrow keys to add or remove time. Press "start" to kick off the timer!
 
 ## How does it work?
 `Countdown` is an [electron](https://github.com/electron/electron) app that packages up an underlying [react](https://github.com/facebook/react) app. Overkill? Definitely. But I didn't want to go about learning Swift, and I'd been wanting to play around with electron/react.
@@ -20,7 +24,10 @@ Download the app from the [releases](https://github.com/adoxography/countdown/re
 ## Contributing
 
 ### Building the app
-1. Clone the app
+Ensure [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), [node](https://nodejs.org/en/), and optionally [yarn](https://classic.yarnpkg.com/en/docs/install/#mac-stable) are installed. (I find it easiest to do this via [homebrew](https://brew.sh/).)
+
+From the command line (i.e. `terminal`):
+1. Clone the app: `git clone https://github.com/adoxography/countdown && cd countdown`
 1. Install the dependencies: `yarn` or `npm install`
 1. Run `yarn start` or `npm start` to start the development server
 1. Run `yarn build` or `npm run build` to build the app (into the `dist/` folder)
