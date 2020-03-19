@@ -1,0 +1,23 @@
+.countdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.control-buttons .button {
+    font-size: 20px;
+    margin-right: 8px;
+    margin-left: 8px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.9);
+}

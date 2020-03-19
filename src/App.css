@@ -9,17 +9,10 @@
 body {
     -webkit-app-region: drag;
     height: 100vh;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
 }
 
 button {
     -webkit-app-region: no-drag;
-}
-
-.clock {
-    display: inline-block;
 }
 
 .close-button {
@@ -41,9 +34,8 @@ button {
 
 #root {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     background-color: #00000080;
     border-radius: 2rem;
     width: 100%;
@@ -57,23 +49,6 @@ button {
 .button:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
-}
-
-.control-buttons {
-    display: flex;
-    justify-content: center;
-}
-
-.control-buttons .button {
-    font-size: 20px;
-    margin-right: 8px;
-    margin-left: 8px;
-    margin-bottom: 8px;
-    border-radius: 8px;
-    border: none;
-    text-transform: uppercase;
-    font-weight: 300;
-    color: rgba(0, 0, 0, 0.9);
 }
 
 .button.is-green {
