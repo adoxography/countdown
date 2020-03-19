@@ -51,9 +51,11 @@ class Countdown extends React.Component {
         this.start();
         break;
       case 38:  // up arrow
+      case 75:  // k key
         this.increment(amount);
         break;
       case 40:  // down arrow
+      case 74:  // j key
         this.decrement(amount);
         break;
       default:

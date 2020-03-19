@@ -40,12 +40,17 @@ const Clock = ({ time, disabled, onWheel, onKeyDown }) => {
    * one
    */
   const handleKeyDown = (e, index, unit) => {
-    if (e.keyCode === 37) {
-      // Left arrow
-      refs[(index-1+3) % 3].current.focus();
-    } else if (e.keyCode === 39) {
-      // Right arrow
-      refs[(index+1) % 3].current.focus();
+    switch(e.keyCode) {
+      case 37:  // Left arrow
+      case 72:  // h key
+        refs[(index-1+3) % 3].current.focus();
+        break;
+      case 39:  // Right arrow
+      case 76:  // l key
+        refs[(index+1) % 3].current.focus();
+        break
+      default:
+        break;
     }
 
     onKeyDown(e, unit);
