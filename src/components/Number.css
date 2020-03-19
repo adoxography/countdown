@@ -3,6 +3,7 @@
     display: inline-block;
     margin: 15px;
     border-radius: 20px;
+    transition: background-color .15s ease-in-out;
 }
 
 .segmented-number:hover {
