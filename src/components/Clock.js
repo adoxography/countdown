@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Number from './Number';
+import { units } from '../util';
+
+const { SECOND, MINUTE, HOUR } = units;
 
 const splitSeconds = totalSeconds => {
   const seconds = totalSeconds % 60;
@@ -40,24 +43,24 @@ const Clock = ({ time, disabled, onWheel, onKeyDown }) => {
         disabled={disabled}
         value={hours}
         size={2}
-        onWheel={e => disabled || onWheel(e, 'hour')}
-        onKeyDown={e => handleKeyDown(e, 0, 'hour')}
+        onWheel={e => disabled || onWheel(e, HOUR)}
+        onKeyDown={e => handleKeyDown(e, 0, HOUR)}
       />
       <Number
         ref={refs[1]}
         disabled={disabled}
         value={minutes}
         size={2}
-        onWheel={e => disabled || onWheel(e, 'minute')}
-        onKeyDown={e => handleKeyDown(e, 1, 'minute')}
+        onWheel={e => disabled || onWheel(e, MINUTE)}
+        onKeyDown={e => handleKeyDown(e, 1, MINUTE)}
       />
       <Number
         ref={refs[2]}
         disabled={disabled}
         value={seconds}
         size={2}
-        onWheel={e => disabled || onWheel(e, 'second')}
-        onKeyDown={e => handleKeyDown(e, 2, 'second')}
+        onWheel={e => disabled || onWheel(e, SECOND)}
+        onKeyDown={e => handleKeyDown(e, 2, SECOND)}
       />
     </div>
   );

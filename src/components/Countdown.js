@@ -1,12 +1,7 @@
 import React from 'react';
 import Clock from './Clock';
+import { units } from '../util';
 import './Countdown.css';
-
-const unitAmounts = {
-  'second': 1,
-  'minute': 60,
-  'hour': 3600
-};
 
 class Countdown extends React.Component {
   constructor(props) {
@@ -71,16 +66,16 @@ class Countdown extends React.Component {
     this.setState(() => ({ time: 0, running: false }));
   }
 
-  increment = (unit = 'second') => {
-    this.updateTime(unitAmounts[unit]);
+  increment = (amount = units.SECOND) => {
+    this.updateTime(amount);
   }
 
-  decrement = (unit = 'second') => {
-    this.updateTime(-unitAmounts[unit]);
+  decrement = (amount = units.SECOND) => {
+    this.updateTime(-amount);
   }
 
   updateTime = amount => {
-    this.setState(state => ({ time: (state.time + amount + 86400) % 86400}));
+    this.setState(state => ({ time: (state.time + amount + units.DAY) % units.DAY}));
   }
 
   render() {
