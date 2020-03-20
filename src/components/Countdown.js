@@ -79,6 +79,10 @@ class Countdown extends React.Component {
     }
   }
 
+  handleChange = ({ delta, unit }) => {
+    this.addTime(delta * unit);
+  }
+
   /**
    * Responds to the value of a number being changed
    */
