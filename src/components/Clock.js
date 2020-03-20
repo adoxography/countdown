@@ -44,12 +44,21 @@ const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
     switch(e.keyCode) {
       case 37:  // Left arrow
       case 72:  // h key
+        e.preventDefault();
         refs[(index-1+3) % 3].current.focus();
         break;
       case 39:  // Right arrow
       case 76:  // l key
+        e.preventDefault();
         refs[(index+1) % 3].current.focus();
         break
+      case 38:  // Up arrow
+      case 40:  // Down arrow
+      case 74:  // j key
+      case 75:  // k key
+        e.target.select();
+        e.preventDefault();
+        break;
       default:
         break;
     }

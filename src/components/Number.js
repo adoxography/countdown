@@ -37,10 +37,11 @@ const Number = React.forwardRef(({ size, value, disabled, onWheel, onKeyDown, on
 
       <input
         type="input"
+        ref={ref}
         className="segmented-input"
         style={{ maxWidth: width }}
         disabled={disabled}
-        onClick={e => e.target.select()}
+        onFocus={e => e.target.select()}
         defaultValue="00"
         size={size}
         maxLength={size}
