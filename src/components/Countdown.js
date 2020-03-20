@@ -21,6 +21,7 @@ class Countdown extends React.Component {
   }
 
   componentDidMount() {
+    scaleToWindow(this.el.current, 1, true);
     window.addEventListener('resize', e => {
       scaleToWindow(this.el.current, 1, true);
     });
@@ -69,6 +70,10 @@ class Countdown extends React.Component {
       default:
         break;
     }
+  }
+
+  handleChange = ({ delta, unit }) => {
+    this.addTime(delta * unit);
   }
 
   /**
@@ -144,6 +149,7 @@ class Countdown extends React.Component {
           disabled={running}
           onWheel={this.handleWheel}
           onKeyDown={this.handleKeyDown}
+          onChange={this.handleChange}
         />
 
         <div className="control-buttons">

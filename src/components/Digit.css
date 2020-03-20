@@ -1,6 +1,8 @@
 .segmented-digit {
-    margin: 10px;
-    display: inline-block;
+    /* margin: 10px; */
+    display: flex;
+    /* padding: .03em; */
+    padding: 0 .1em;
 }
 
 .segment {

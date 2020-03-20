@@ -31,7 +31,7 @@ const splitSeconds = totalSeconds => {
  * @param onWheel    Handler for wheel events
  * @param onKeyDown  Handler for keyDown events
  */
-const Clock = ({ time, disabled, onWheel, onKeyDown }) => {
+const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
   const { hours, minutes, seconds } = splitSeconds(time);
   const refs = [React.useRef(null), React.useRef(null), React.useRef(null)];
 
@@ -66,6 +66,7 @@ const Clock = ({ time, disabled, onWheel, onKeyDown }) => {
         size={2}
         onWheel={e => disabled || onWheel(e, HOUR)}
         onKeyDown={e => handleKeyDown(e, 0, HOUR)}
+        onChange={e => onChange({ ...e, unit: HOUR })}
       />
       <Number
         ref={refs[1]}
@@ -74,6 +75,7 @@ const Clock = ({ time, disabled, onWheel, onKeyDown }) => {
         size={2}
         onWheel={e => disabled || onWheel(e, MINUTE)}
         onKeyDown={e => handleKeyDown(e, 1, MINUTE)}
+        onChange={e => onChange({ ...e, unit: MINUTE })}
       />
       <Number
         ref={refs[2]}
@@ -82,6 +84,7 @@ const Clock = ({ time, disabled, onWheel, onKeyDown }) => {
         size={2}
         onWheel={e => disabled || onWheel(e, SECOND)}
         onKeyDown={e => handleKeyDown(e, 2, SECOND)}
+        onChange={e => onChange({ ...e, unit: SECOND })}
       />
     </div>
   );
@@ -90,6 +93,7 @@ const Clock = ({ time, disabled, onWheel, onKeyDown }) => {
 Clock.defaultProps = {
   onWheel: () => {},
   onKeyDown: () => {},
+  onChange: () => {},
   disabled: false
 };
 
@@ -97,7 +101,8 @@ Clock.propTypes = {
   time: PropTypes.number.isRequired,
   disabled: PropTypes.bool,
   onWheel: PropTypes.func,
-  onKeyDown: PropTypes.func
+  onKeyDown: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 export default Clock;

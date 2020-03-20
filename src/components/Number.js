@@ -14,24 +14,50 @@ import './Number.css';
  * @param onWheel    Event handler for wheel events
  * @param onKeyDown  Event handler for keyDown events
  */
-const Number = React.forwardRef(({ size, value, disabled, onWheel, onKeyDown }, ref) => (
-  <div
-    ref={ref}
-    disabled={disabled}
-    tabIndex={disabled ? '' : '0'}
-    className="segmented-number"
-    onWheel={onWheel}
-    onKeyDown={onKeyDown}
-  >
-    {_.rangeRight(size).map(n => <Digit key={n} value={Math.floor(value / 10**n) % 10} />)}
-  </div>
-));
+const Number = React.forwardRef(({ size, value, disabled, onWheel, onKeyDown, onChange }, ref) => {
+  const handleChange = e => {
+    const newValue = parseInt(e.target.value) || 0;
+    const delta = newValue - value;
+
+    onChange({
+      oldValue: value,
+      newValue,
+      delta
+    });
+  };
+
+  const width = `${.615 * size}em`;
+
+  return (
+    <div className="segmented-number" onWheel={onWheel} style={{ width  }}>
+
+      <div className="segmented-display">
+        {_.rangeRight(size).map(n => <Digit key={n} value={Math.floor(value / 10**n) % 10} />)}
+      </div>
+
+      <input
+        type="input"
+        className="segmented-input"
+        style={{ maxWidth: width }}
+        disabled={disabled}
+        onClick={e => e.target.select()}
+        defaultValue="00"
+        size={size}
+        maxLength={size}
+        onKeyDown={onKeyDown}
+        onChange={handleChange}
+        onBlur={e => e.target.value = '00'}
+      />
+    </div>
+  );
+});
 
 Number.defaultProps = {
   size: 1,
   disabled: false,
   onWheel: () => {},
-  onKeyDown: () => {}
+  onKeyDown: () => {},
+  onChange: () => {}
 };
 
 Number.propTypes = {
@@ -39,7 +65,8 @@ Number.propTypes = {
   disabled: PropTypes.bool,
   value: PropTypes.number.isRequired,
   onWheel: PropTypes.func,
-  onKeyDown: PropTypes.func
+  onKeyDown: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 export default Number;

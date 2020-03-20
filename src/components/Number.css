@@ -4,6 +4,34 @@
     margin: 15px;
     border-radius: 20px;
     transition: background-color .15s ease-in-out;
+    font-size: 120px;
+    height: 1em;
+    width: 1em;
+}
+
+.segmented-number .segmented-input,
+.segmented-number .segmented-display {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.segmented-number .segmented-input {
+    font-size: inherit;
+    font-family: monospace;
+    text-align: right;
+    background-color: transparent;
+    color: transparent;
+    border: none;
+    height: 1em;
+}
+
+.segmented-number .segmented-display {
+    margin-top: .15em;
+    display: flex;
+    height: 1em;
 }
 
 .segmented-number:hover {
@@ -23,16 +51,16 @@
 .segmented-number:not(:last-child):after {
     content: '';
     position: absolute;
-    right: -20px;
-    width: 10px;
-    height: 10px;
+    right: -.16em;
+    width: .08em;
+    height: .08em;
     background-color: var(--primary);
 }
 
 .segmented-number::before {
-    top: 40px;
+    top: .3em;
 }
 
 .segmented-number::after {
-    top: 90px;
+    top: .6em;
 }
