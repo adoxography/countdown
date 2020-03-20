@@ -26,6 +26,21 @@
     color: transparent;
     border: none;
     height: 1em;
+    border-radius: 20px;
+    cursor: default;
+}
+
+.segmented-number .segmented-input:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.segmented-number .segmented-input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.segmented-number .segmented-input::selection {
+    background-color: transparent;
 }
 
 .segmented-number .segmented-display {
@@ -35,7 +50,7 @@
 }
 
 .segmented-number:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    /* background-color: rgba(255, 255, 255, 0.1); */
 }
 
 .segmented-number:hover[disabled] {
