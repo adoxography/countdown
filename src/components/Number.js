@@ -14,7 +14,7 @@ import './Number.css';
  * @param onWheel    Event handler for wheel events
  * @param onKeyDown  Event handler for keyDown events
  */
-const Number = React.forwardRef(({ size, value, disabled, onWheel, onKeyDown, onChange }, ref) => {
+const Number = React.forwardRef(({ size, value, disabled, onWheel, onKeyDown, onChange, 'aria-label': ariaLabel }, ref) => {
   
   /**
    * Packages packages up the value information and sends it along with the
@@ -40,9 +40,12 @@ const Number = React.forwardRef(({ size, value, disabled, onWheel, onKeyDown, on
         {_.rangeRight(size).map(n => <Digit key={n} value={Math.floor(value / 10**n) % 10} />)}
       </div>
 
+      <input type="hidden" aria-label="value" value={value} />
+
       <input
-        type="input"
+        type="text"
         ref={ref}
+        aria-label={ariaLabel}
         className="segmented-input"
         style={{ maxWidth: width }}
         disabled={disabled}

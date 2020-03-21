@@ -26,14 +26,16 @@ class Countdown extends React.Component {
   }
 
   componentWillUnmount() {
-    this.stopTimer();
+    this.stop();
   }
 
   /**
    * Resizes the component to fit the screen
    */
   resize = () => {
-    scaleToWindow(this.el.current, 1, true);
+    if (this.el.current) {
+      scaleToWindow(this.el.current, 1, true);
+    }
   }
 
   /**
@@ -159,6 +161,8 @@ class Countdown extends React.Component {
           onKeyDown={this.handleKeyDown}
           onChange={this.handleChange}
         />
+
+        <input aria-label="remaining seconds" type="hidden" value={time} />
 
         <div className="control-buttons">
           <button

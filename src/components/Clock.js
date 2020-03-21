@@ -94,6 +94,7 @@ const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
       <Number
         ref={refs[0]}
         disabled={disabled}
+        aria-label="hours"
         value={hours}
         size={2}
         onWheel={e => handleWheel(e, { amount: HOUR })}
@@ -103,6 +104,7 @@ const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
       <Number
         ref={refs[1]}
         disabled={disabled}
+        aria-label="minutes"
         value={minutes}
         size={2}
         onWheel={e => handleWheel(e, { amount: MINUTE })}
@@ -112,6 +114,7 @@ const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
       <Number
         ref={refs[2]}
         disabled={disabled}
+        aria-label="seconds"
         value={seconds}
         size={2}
         onWheel={e => handleWheel(e, { amount: SECOND })}
