@@ -39,6 +39,13 @@ class Countdown extends React.Component {
   }
 
   /**
+   * Resizes the component to fit the screen
+   */
+  resize = () => {
+    scaleToWindow(this.el.current, 1, true);
+  }
+
+  /**
    * Responds to the wheel being scrolled
    *
    * @param e       The event that was fired
@@ -79,8 +86,11 @@ class Countdown extends React.Component {
     }
   }
 
-  handleChange = ({ delta, unit }) => {
-    this.addTime(delta * unit);
+  /**
+   * Responds to the value of a number being changed
+   */
+  handleChange = (e, { delta, amount }) => {
+    this.addTime(delta * amount);
   }
 
   /**
