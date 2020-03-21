@@ -40,7 +40,9 @@ const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
    * shift focus to the number to the left or right of the currently focused
    * one
    */
-  const handleKeyDown = (e, index, unit) => {
+  const handleKeyDown = (e, data) => {
+    const { index } = data;
+
     switch(e.keyCode) {
       case 37:  // Left arrow
       case 72:  // h key
@@ -56,15 +58,36 @@ const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
       case 40:  // Down arrow
       case 74:  // j key
       case 75:  // k key
-        e.target.select();
         e.preventDefault();
+        e.target.select();
         break;
       default:
         break;
     }
 
-    onKeyDown(e, unit);
+    onKeyDown(e, data);
   }
+
+  /**
+   * Intercepts change events to check if the number is full; if it is, shifts
+   * focus to the next number
+  */
+  const handleChange = (e, data) => {
+    const { index } = data;
+
+    if (e.target.value.length === e.target.maxLength) {
+      e.preventDefault();
+      if (index < 2) {
+        refs[index+1].current.focus();
+      } else {
+        e.target.blur();
+      }
+    }
+
+    onChange(e, data);
+  };
+
+  const handleWheel = (e, data) => disabled || onWheel(e, data);
 
   return (
     <div className="clock">
@@ -73,27 +96,27 @@ const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
         disabled={disabled}
         value={hours}
         size={2}
-        onWheel={e => disabled || onWheel(e, HOUR)}
-        onKeyDown={e => handleKeyDown(e, 0, HOUR)}
-        onChange={e => onChange({ ...e, unit: HOUR })}
+        onWheel={e => handleWheel(e, { amount: HOUR })}
+        onKeyDown={e => handleKeyDown(e, { index: 0, amount: HOUR })}
+        onChange={(e, data) => handleChange(e, { ...data, index: 0, amount: HOUR })}
       />
       <Number
         ref={refs[1]}
         disabled={disabled}
         value={minutes}
         size={2}
-        onWheel={e => disabled || onWheel(e, MINUTE)}
-        onKeyDown={e => handleKeyDown(e, 1, MINUTE)}
-        onChange={e => onChange({ ...e, unit: MINUTE })}
+        onWheel={e => handleWheel(e, { amount: MINUTE })}
+        onKeyDown={e => handleKeyDown(e, { index: 1, amount: MINUTE })}
+        onChange={(e, data) => handleChange(e, { ...data, index: 1, amount: MINUTE })}
       />
       <Number
         ref={refs[2]}
         disabled={disabled}
         value={seconds}
         size={2}
-        onWheel={e => disabled || onWheel(e, SECOND)}
-        onKeyDown={e => handleKeyDown(e, 2, SECOND)}
-        onChange={e => onChange({ ...e, unit: SECOND })}
+        onWheel={e => handleWheel(e, { amount: SECOND })}
+        onKeyDown={e => handleKeyDown(e, { index: 2, amount: SECOND })}
+        onChange={(e, data) => handleChange(e, { ...data, index: 2, amount: SECOND })}
       />
     </div>
   );

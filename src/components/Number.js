@@ -15,11 +15,16 @@ import './Number.css';
  * @param onKeyDown  Event handler for keyDown events
  */
 const Number = React.forwardRef(({ size, value, disabled, onWheel, onKeyDown, onChange }, ref) => {
+  
+  /**
+   * Packages packages up the value information and sends it along with the
+   * event on a change
+   */
   const handleChange = e => {
     const newValue = parseInt(e.target.value) || 0;
     const delta = newValue - value;
 
-    onChange({
+    onChange(e, {
       oldValue: value,
       newValue,
       delta

@@ -21,14 +21,19 @@ class Countdown extends React.Component {
   }
 
   componentDidMount() {
-    scaleToWindow(this.el.current, 1, true);
-    window.addEventListener('resize', e => {
-      scaleToWindow(this.el.current, 1, true);
-    });
+    this.resize();
+    window.addEventListener('resize', this.resize);
   }
 
   componentWillUnmount() {
     this.stopTimer();
+  }
+
+  /**
+   * Resizes the component to fit the screen
+   */
+  resize = () => {
+    scaleToWindow(this.el.current, 1, true);
   }
 
   /**
@@ -37,7 +42,7 @@ class Countdown extends React.Component {
    * @param e       The event that was fired
    * @param amount  The amount, in seconds, to adjust the time by
    */
-  handleWheel = (e, amount) => {
+  handleWheel = (e, { amount }) => {
     if (e.deltaY < 0) {  // Scrolling down
       this.decrement(amount);
     } else if (e.deltaY > 0) {  // Scrolling up
@@ -54,7 +59,7 @@ class Countdown extends React.Component {
    * @param e       The even that was fired
    * @param amount  The amount, in seconds, to adjust the time by
    */
-  handleKeyDown = (e, amount) => {
+  handleKeyDown = (e, { amount }) => {
     switch (e.keyCode) {
       case 32:  // space bar
         this.start();
@@ -72,8 +77,11 @@ class Countdown extends React.Component {
     }
   }
 
-  handleChange = ({ delta, unit }) => {
-    this.addTime(delta * unit);
+  /**
+   * Responds to the value of a number being changed
+   */
+  handleChange = (e, { delta, amount }) => {
+    this.addTime(delta * amount);
   }
 
   /**
