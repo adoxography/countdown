@@ -42,7 +42,9 @@ class Countdown extends React.Component {
    * Resizes the component to fit the screen
    */
   resize = () => {
-    scaleToWindow(this.el.current, 1, true);
+    if (this.el.current) {
+      scaleToWindow(this.el.current, 1, true);
+    }
   }
 
   /**
