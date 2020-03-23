@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Number from './Number';
+import { useGlobalState } from '../hooks/useGlobalState';
 import { units } from '../util';
 import './Clock.css';
 
@@ -33,6 +34,7 @@ const splitSeconds = totalSeconds => {
  */
 const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
   const { hours, minutes, seconds } = splitSeconds(time);
+  const { colour } = useGlobalState();
   const refs = [React.useRef(null), React.useRef(null), React.useRef(null)];
 
   /**
@@ -101,6 +103,12 @@ const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
         onKeyDown={e => handleKeyDown(e, { index: 0, amount: HOUR })}
         onChange={(e, data) => handleChange(e, { ...data, index: 0, amount: HOUR })}
       />
+
+      <div className="separator">
+        <div className="dot" style={{ backgroundColor: colour }} />
+        <div className="dot" style={{ backgroundColor: colour }} />
+      </div>
+
       <Number
         ref={refs[1]}
         disabled={disabled}
@@ -111,6 +119,12 @@ const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
         onKeyDown={e => handleKeyDown(e, { index: 1, amount: MINUTE })}
         onChange={(e, data) => handleChange(e, { ...data, index: 1, amount: MINUTE })}
       />
+
+      <div className="separator">
+        <div className="dot" style={{ backgroundColor: colour }} />
+        <div className="dot" style={{ backgroundColor: colour }} />
+      </div>
+
       <Number
         ref={refs[2]}
         disabled={disabled}

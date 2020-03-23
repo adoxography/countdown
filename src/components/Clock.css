@@ -1,3 +1,16 @@
 .clock {
     display: flex;
 }
+
+.separator {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 2em 0;
+}
+
+.separator .dot {
+    width: .5em;
+    height: .5em;
+    transition: background-color .2s ease-in-out;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useGlobalState } from '../hooks/useGlobalState';
 import './Digit.css';
 
 /**
@@ -24,6 +25,7 @@ const segmentSettings = [
  * @param value  The digit to display. Must be between 0 and 9, inclusive
  */
 const Digit = ({ value }) => {
+  const { colour } = useGlobalState();
   const settings = segmentSettings[value];
 
   return (
@@ -39,7 +41,7 @@ const Digit = ({ value }) => {
         </defs>
       </svg>
 
-      <svg data-testid="segmented-digit" xmlns="https://www.w3.org/2000/svg" xmlnsXlink="https://www.w3.org/1999/xlink" height=".75em" viewBox="0 0 260 480">
+      <svg data-testid="segmented-digit" xmlns="https://www.w3.org/2000/svg" xmlnsXlink="https://www.w3.org/1999/xlink" height=".75em" viewBox="0 0 260 480" style={{ fill: colour }}>
         <use className="segment" data-testid="segment-a" disabled={!settings[0]} xlinkHref="#unit-h" x="30" y="0"></use>
         <use className="segment" data-testid="segment-b" disabled={!settings[1]} xlinkHref="#unit-v" x="220" y="30"></use>
         <use className="segment" data-testid="segment-c" disabled={!settings[2]} xlinkHref="#unit-v" x="220" y="250"></use>

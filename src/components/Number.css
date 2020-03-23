@@ -61,21 +61,3 @@
     background-color: rgba(255, 255, 255, 0.2);
     outline: 0;
 }
-
-.segmented-number:not(:last-child):before,
-.segmented-number:not(:last-child):after {
-    content: '';
-    position: absolute;
-    right: -.16em;
-    width: .08em;
-    height: .08em;
-    background-color: var(--primary);
-}
-
-.segmented-number::before {
-    top: .3em;
-}
-
-.segmented-number::after {
-    top: .6em;
-}
