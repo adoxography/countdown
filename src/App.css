@@ -46,6 +46,8 @@ button {
 }
 
 .button {
+    display: flex;
+    padding: .1em;
     transition: .1s ease-in-out;
 }
 

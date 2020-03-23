@@ -1,4 +1,5 @@
 import React from 'react';
+import MaterialIcon from 'material-icons-react';
 import './App.css';
 import Countdown from './components/Countdown';
 
@@ -10,7 +11,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <button className="button close-button" onClick={close}>X</button>
+        <button className="button close-button" onClick={close}>
+          <MaterialIcon icon="close" />
+        </button>
 
         <Countdown />
       </div>

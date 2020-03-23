@@ -16,8 +16,7 @@
     "lodash": "^4.17.15",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0",
-    "typeface-roboto": "^0.0.75"
+    "react-scripts": "3.4.0"
   },
   "main": "public/electron.js",
   "homepage": "./",
@@ -67,6 +66,7 @@
     "concurrently": "^5.1.0",
     "electron": "^8.1.1",
     "electron-builder": "^22.4.1",
+    "material-icons-react": "^1.0.4",
     "prop-types": "^15.7.2",
     "react-test-renderer": "^16.13.0",
     "wait-on": "^4.0.1"

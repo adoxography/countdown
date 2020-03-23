@@ -1,4 +1,5 @@
 import React from 'react';
+import MaterialIcon from 'material-icons-react';
 import Clock from './Clock';
 import { scaleToWindow, units } from '../util';
 import './Countdown.css';
@@ -186,14 +187,14 @@ class Countdown extends React.Component {
             className="button is-red"
             onClick={this.reset}
           >
-            Reset
+            <MaterialIcon icon="refresh" />
           </button>
           <button
             disabled={time === 0}
             className={`button ${running ? 'is-red' : 'is-green'}`}
             onClick={running ? this.stop : this.start}
           >
-            {running ? 'Stop' : 'Start'}
+            <MaterialIcon key={`button-${running ? 'red' : 'green'}`} icon={running ? 'stop' : 'play_arrow'} />
           </button>
         </div>
       </div>
