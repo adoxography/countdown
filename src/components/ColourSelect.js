@@ -15,6 +15,7 @@ const ColourSelect = ({ className, colour, onChange }) => {
     <div className="colour-select-container" >
       <input
         type="color"
+        aria-label="colour select"
         ref={inputEl}
         defaultValue={colour}
         onChange={onChange}
