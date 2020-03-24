@@ -16,10 +16,10 @@ Set the time by clicking on the desired time unit (i.e. hours, minutes, or secon
 
 ## To do
 - [x] Make the app resizable
-- [ ] Allow time entry with number keys
+- [x] Allow time entry with number keys
 - [ ] Make the `Clock` component adhere to the [ARIA timer specification](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/ARIA_timer_role)
 - [ ] Make available for Windows?
-- [ ] Add colour control?
+- [x] Add colour control?
 
 ## Contributing
 
