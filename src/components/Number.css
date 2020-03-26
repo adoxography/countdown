@@ -1,7 +1,8 @@
 .segmented-number {
     position: relative;
     display: flex;
-    margin: 15px;
+    /* margin: 15px; */
+    margin: .05em;
     border-radius: 20px;
     transition: background-color .15s ease-in-out;
     font-size: 120px;
