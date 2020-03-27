@@ -1,4 +1,6 @@
 # Countdown
+[![Countdown](https://circleci.com/gh/adoxography/countdown.svg?style=shield)](https://app.circleci.com/pipelines/github/adoxography/countdown)
+
 ![Countdown screenshot](/docs/screenshot.png)
 
 ## What is this for?
