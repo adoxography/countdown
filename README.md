@@ -1,5 +1,5 @@
 # Countdown
-[![Countdown](https://circleci.com/github/adoxography/countdown.svg?style=shield)](https://app.circleci.com/pipelines/github/adoxography/countdown)
+[![Countdown](https://circleci.com/gh/adoxography/countdown.svg?style=shield)](https://app.circleci.com/pipelines/github/adoxography/countdown)
 
 ![Countdown screenshot](/docs/screenshot.png)
 
