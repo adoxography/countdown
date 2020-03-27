@@ -189,13 +189,6 @@ class Countdown extends React.Component {
 
         <div className="control-buttons">
           <button
-            disabled={running || time === 0}
-            className="button is-red"
-            onClick={this.reset}
-          >
-            <MaterialIcon icon="refresh" />
-          </button>
-          <button
             aria-label="start"
             ref={this.startEl}
             disabled={time === 0}
@@ -203,6 +196,13 @@ class Countdown extends React.Component {
             onClick={running ? this.stop : this.start}
           >
             <MaterialIcon key={`button-${running ? 'red' : 'green'}`} icon={running ? 'stop' : 'play_arrow'} />
+          </button>
+          <button
+            disabled={running || time === 0}
+            className="button is-red"
+            onClick={this.reset}
+          >
+            <MaterialIcon icon="refresh" />
           </button>
         </div>
       </div>
