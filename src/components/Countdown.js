@@ -190,6 +190,7 @@ class Countdown extends React.Component {
             <MaterialIcon icon="refresh" />
           </button>
           <button
+            aria-label="start"
             disabled={time === 0}
             className={`button ${running ? 'is-red' : 'is-green'}`}
             onClick={running ? this.stop : this.start}

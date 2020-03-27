@@ -35,7 +35,6 @@ export const useGlobalState = () => {
   const [ state, dispatch ] = useContext(GlobalStateContext);
 
   const setColour = colour => {
-    console.log(colour);
     dispatch({
       type: SET_COLOUR,
       payload: colour

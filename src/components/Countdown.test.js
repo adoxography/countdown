@@ -1,14 +1,19 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
+import { GlobalStateProvider } from '../hooks/useGlobalState';
 import Countdown from './Countdown';
 
 const setup = () => {
-  const utils = render(<Countdown />);
+  const utils = render(
+    <GlobalStateProvider>
+      <Countdown />
+    </GlobalStateProvider>
+  );
   const seconds = utils.getByLabelText('seconds');
   const minutes = utils.getByLabelText('minutes');
   const hours = utils.getByLabelText('hours');
   const remainingSeconds = utils.getByLabelText('remaining seconds');
-  const startButton = utils.getByText('Start');
+  const startButton = utils.getByLabelText('start');
 
   return {
     seconds,

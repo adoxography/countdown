@@ -1,9 +1,14 @@
 import React from 'react';
 import { render, fireEvent, wait } from '@testing-library/react';
 import App from './App';
+import { GlobalStateProvider } from './hooks/useGlobalState';
 
 const setup = () => {
-  const utils = render(<App />);
+  const utils = render(
+    <GlobalStateProvider>
+      <App />
+    </GlobalStateProvider>
+  );
   const colourButton = utils.getByLabelText('colour select');
   const digits = utils.getAllByTestId('segmented-digit');
 
