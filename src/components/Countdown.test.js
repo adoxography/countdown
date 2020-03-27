@@ -74,6 +74,12 @@ describe('<Countdown>', () => {
     expect(minutes).toHaveFocus();
   });
 
+  it('shifts focus to the start button when the last number is inputted', async () => {
+    const { seconds, startButton } = setup();
+    fireEvent.change(seconds, { target: { value: '13' } });
+    wait(() => expect(startButton).toHaveFocus());
+  });
+
   it('starts when the start button is pressed', async () => {
     const { seconds, startButton, remainingSeconds } = setup();
     fireEvent.change(seconds, { target: { value: '30' } });

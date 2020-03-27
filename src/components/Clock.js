@@ -32,7 +32,7 @@ const splitSeconds = totalSeconds => {
  * @param onWheel    Handler for wheel events
  * @param onKeyDown  Handler for keyDown events
  */
-const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
+const Clock = ({ time, disabled, onWheel, onKeyDown, onChange, onBlurOut }) => {
   const { hours, minutes, seconds } = splitSeconds(time);
   const { colour } = useGlobalState();
   const refs = [React.useRef(null), React.useRef(null), React.useRef(null)];
@@ -83,6 +83,7 @@ const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
         refs[index+1].current.focus();
       } else {
         e.target.blur();
+        onBlurOut();
       }
     }
 
@@ -143,6 +144,7 @@ Clock.defaultProps = {
   onWheel: () => {},
   onKeyDown: () => {},
   onChange: () => {},
+  onBlurOut: () => {},
   disabled: false
 };
 
@@ -151,6 +153,7 @@ Clock.propTypes = {
   disabled: PropTypes.bool,
   onWheel: PropTypes.func,
   onKeyDown: PropTypes.func,
+  onBlurOut: PropTypes.func,
   onChange: PropTypes.func
 };
 

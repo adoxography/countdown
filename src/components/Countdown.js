@@ -13,6 +13,7 @@ class Countdown extends React.Component {
     super(props);
 
     this.el = React.createRef(null);
+    this.startEl = React.createRef(null);
 
     this.state = {
       time: 0,
@@ -166,6 +167,10 @@ class Countdown extends React.Component {
     });
   }
 
+  handleBlurOut = () => {
+    this.startEl.current.focus();
+  }
+
   render() {
     const { time, running } = this.state;
 
@@ -177,6 +182,7 @@ class Countdown extends React.Component {
           onWheel={this.handleWheel}
           onKeyDown={this.handleKeyDown}
           onChange={this.handleChange}
+          onBlurOut={this.handleBlurOut}
         />
 
         <input aria-label="remaining seconds" type="hidden" value={time} />
@@ -191,6 +197,7 @@ class Countdown extends React.Component {
           </button>
           <button
             aria-label="start"
+            ref={this.startEl}
             disabled={time === 0}
             className={`button ${running ? 'is-red' : 'is-green'}`}
             onClick={running ? this.stop : this.start}
