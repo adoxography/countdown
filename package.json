@@ -6,7 +6,7 @@
     "url": "https://github.com/adoxography"
   },
   "description": "Simple timer app that floats over everything else",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
