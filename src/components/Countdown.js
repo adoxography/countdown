@@ -1,6 +1,7 @@
 import React from 'react';
+import MaterialIcon from 'material-icons-react';
 import Clock from './Clock';
-import { units } from '../util';
+import { scaleToWindow, units } from '../util';
 import './Countdown.css';
 
 /**
@@ -11,6 +12,8 @@ class Countdown extends React.Component {
   constructor(props) {
     super(props);
 
+    this.el = React.createRef(null);
+
     this.state = {
       time: 0,
       running: false,
@@ -18,8 +21,31 @@ class Countdown extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.resize();
+    window.addEventListener('resize', this.resize);
+  }
+
   componentWillUnmount() {
-    this.stopTimer();
+    this.stop();
+  }
+
+  /**
+   * Resizes the component to fit the screen
+   */
+  resize = () => {
+    if (this.el.current) {
+      scaleToWindow(this.el.current, 1, true);
+    }
+  }
+
+  /**
+   * Resizes the component to fit the screen
+   */
+  resize = () => {
+    if (this.el.current) {
+      scaleToWindow(this.el.current, 1, true);
+    }
   }
 
   /**
@@ -28,7 +54,7 @@ class Countdown extends React.Component {
    * @param e       The event that was fired
    * @param amount  The amount, in seconds, to adjust the time by
    */
-  handleWheel = (e, amount) => {
+  handleWheel = (e, { amount }) => {
     if (e.deltaY < 0) {  // Scrolling down
       this.decrement(amount);
     } else if (e.deltaY > 0) {  // Scrolling up
@@ -45,20 +71,36 @@ class Countdown extends React.Component {
    * @param e       The even that was fired
    * @param amount  The amount, in seconds, to adjust the time by
    */
-  handleKeyDown = (e, amount) => {
+  handleKeyDown = (e, { amount }) => {
     switch (e.keyCode) {
       case 32:  // space bar
         this.start();
         break;
       case 38:  // up arrow
+      case 75:  // k key
         this.increment(amount);
         break;
       case 40:  // down arrow
+      case 74:  // j key
         this.decrement(amount);
         break;
       default:
         break;
     }
+  }
+
+  /**
+   * Responds to the value of a number being changed
+   */
+  handleChange = (e, { delta, amount }) => {
+    this.addTime(delta * amount);
+  }
+
+  /**
+   * Responds to the value of a number being changed
+   */
+  handleChange = (e, { delta, amount }) => {
+    this.addTime(delta * amount);
   }
 
   /**
@@ -128,13 +170,16 @@ class Countdown extends React.Component {
     const { time, running } = this.state;
 
     return (
-      <div className="countdown">
+      <div className="countdown" ref={this.el}>
         <Clock
           time={time}
           disabled={running}
           onWheel={this.handleWheel}
           onKeyDown={this.handleKeyDown}
+          onChange={this.handleChange}
         />
+
+        <input aria-label="remaining seconds" type="hidden" value={time} />
 
         <div className="control-buttons">
           <button
@@ -142,14 +187,14 @@ class Countdown extends React.Component {
             className="button is-red"
             onClick={this.reset}
           >
-            Reset
+            <MaterialIcon icon="refresh" />
           </button>
           <button
             disabled={time === 0}
             className={`button ${running ? 'is-red' : 'is-green'}`}
             onClick={running ? this.stop : this.start}
           >
-            {running ? 'Stop' : 'Start'}
+            <MaterialIcon key={`button-${running ? 'red' : 'green'}`} icon={running ? 'stop' : 'play_arrow'} />
           </button>
         </div>
       </div>

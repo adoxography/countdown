@@ -1,13 +1,57 @@
 .segmented-number {
     position: relative;
-    display: inline-block;
-    margin: 15px;
+    display: flex;
+    /* margin: 15px; */
+    margin: .05em;
     border-radius: 20px;
     transition: background-color .15s ease-in-out;
+    font-size: 120px;
+    height: 1em;
+    width: 1em;
+}
+
+.segmented-number .segmented-input,
+.segmented-number .segmented-display {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.segmented-number .segmented-input {
+    font-size: inherit;
+    font-family: monospace;
+    text-align: right;
+    background-color: transparent;
+    color: transparent;
+    border: none;
+    height: 1em;
+    border-radius: 20px;
+    cursor: default;
+}
+
+.segmented-number .segmented-input:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.segmented-number .segmented-input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.segmented-number .segmented-input::selection {
+    background-color: transparent;
+}
+
+.segmented-number .segmented-display {
+    margin-top: .15em;
+    display: flex;
+    height: 1em;
 }
 
 .segmented-number:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    /* background-color: rgba(255, 255, 255, 0.1); */
 }
 
 .segmented-number:hover[disabled] {
@@ -17,22 +61,4 @@
 .segmented-number:focus {
     background-color: rgba(255, 255, 255, 0.2);
     outline: 0;
-}
-
-.segmented-number:not(:last-child):before,
-.segmented-number:not(:last-child):after {
-    content: '';
-    position: absolute;
-    right: -20px;
-    width: 10px;
-    height: 10px;
-    background-color: var(--primary);
-}
-
-.segmented-number::before {
-    top: 40px;
-}
-
-.segmented-number::after {
-    top: 90px;
 }

@@ -13,6 +13,7 @@ function createWindow() {
     frame: false,
     transparent: true,
     hasShadow: false,
+    fullscreenenable: false,
     webPreferences: {
       nodeIntegration: true
     }
@@ -26,6 +27,8 @@ function createWindow() {
       ? 'http://localhost:3000'
       : `file://${path.join(__dirname, '../build/index.html')}`
   );
+
+  mainWindow.setAspectRatio(609/212);
 
   // Ensure app is always on top, aside for truly floating apps like Spotlight
   mainWindow.setAlwaysOnTop(true, 'floating', 1);

@@ -9,17 +9,17 @@ I deliver workshops for [Canada Learning Code](https://canadalearningcode.ca), a
 Download the app from the [releases](https://github.com/adoxography/countdown/releases) page. The app isn't signed, so you can try running it anyway by following [these instructions](https://support.apple.com/en-ca/guide/mac-help/mh40616/mac). If that doesn't work, see the instructions below on how to build it yourself.
 
 ### Usage
-Set the time by clicking on the desired time unit (i.e. hours, minutes, or seconds) and use the up and down arrow keys to add or remove time. Press "start" to kick off the timer!
+Set the time by clicking on the desired time unit (i.e. hours, minutes, or seconds) and entering the desired time. You can also use the up and down arrow keys to add or remove time. Press "start" to kick off the timer!
 
 ## How does it work?
 `Countdown` is an [electron](https://github.com/electron/electron) app that packages up an underlying [react](https://github.com/facebook/react) app. Overkill? Definitely. But I didn't want to go about learning Swift, and I'd been wanting to play around with electron/react.
 
 ## To do
-- [ ] Make the app resizable
-- [ ] Allow time entry with number keys
+- [x] Make the app resizable
+- [x] Allow time entry with number keys
 - [ ] Make the `Clock` component adhere to the [ARIA timer specification](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/ARIA_timer_role)
 - [ ] Make available for Windows?
-- [ ] Add colour control?
+- [x] Add colour control?
 
 ## Contributing
 

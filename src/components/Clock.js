@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Number from './Number';
+import { useGlobalState } from '../hooks/useGlobalState';
 import { units } from '../util';
+import './Clock.css';
 
 const { SECOND, MINUTE, HOUR } = units;
 
@@ -30,8 +32,9 @@ const splitSeconds = totalSeconds => {
  * @param onWheel    Handler for wheel events
  * @param onKeyDown  Handler for keyDown events
  */
-const Clock = ({ time, disabled, onWheel, onKeyDown }) => {
+const Clock = ({ time, disabled, onWheel, onKeyDown, onChange }) => {
   const { hours, minutes, seconds } = splitSeconds(time);
+  const { colour } = useGlobalState();
   const refs = [React.useRef(null), React.useRef(null), React.useRef(null)];
 
   /**
@@ -39,43 +42,98 @@ const Clock = ({ time, disabled, onWheel, onKeyDown }) => {
    * shift focus to the number to the left or right of the currently focused
    * one
    */
-  const handleKeyDown = (e, index, unit) => {
-    if (e.keyCode === 37) {
-      // Left arrow
-      refs[(index-1+3) % 3].current.focus();
-    } else if (e.keyCode === 39) {
-      // Right arrow
-      refs[(index+1) % 3].current.focus();
+  const handleKeyDown = (e, data) => {
+    const { index } = data;
+
+    switch(e.keyCode) {
+      case 37:  // Left arrow
+      case 72:  // h key
+        e.preventDefault();
+        refs[(index-1+3) % 3].current.focus();
+        break;
+      case 39:  // Right arrow
+      case 76:  // l key
+        e.preventDefault();
+        refs[(index+1) % 3].current.focus();
+        break
+      case 38:  // Up arrow
+      case 40:  // Down arrow
+      case 74:  // j key
+      case 75:  // k key
+        e.preventDefault();
+        e.target.select();
+        break;
+      default:
+        break;
     }
 
-    onKeyDown(e, unit);
+    onKeyDown(e, data);
   }
+
+  /**
+   * Intercepts change events to check if the number is full; if it is, shifts
+   * focus to the next number
+  */
+  const handleChange = (e, data) => {
+    const { index } = data;
+
+    if (e.target.value.length === e.target.maxLength) {
+      e.preventDefault();
+      if (index < 2) {
+        refs[index+1].current.focus();
+      } else {
+        e.target.blur();
+      }
+    }
+
+    onChange(e, data);
+  };
+
+  const handleWheel = (e, data) => disabled || onWheel(e, data);
 
   return (
     <div className="clock">
       <Number
         ref={refs[0]}
         disabled={disabled}
+        aria-label="hours"
         value={hours}
         size={2}
-        onWheel={e => disabled || onWheel(e, HOUR)}
-        onKeyDown={e => handleKeyDown(e, 0, HOUR)}
+        onWheel={e => handleWheel(e, { amount: HOUR })}
+        onKeyDown={e => handleKeyDown(e, { index: 0, amount: HOUR })}
+        onChange={(e, data) => handleChange(e, { ...data, index: 0, amount: HOUR })}
       />
+
+      <div className="separator">
+        <div className="dot" style={{ backgroundColor: colour }} />
+        <div className="dot" style={{ backgroundColor: colour }} />
+      </div>
+
       <Number
         ref={refs[1]}
         disabled={disabled}
+        aria-label="minutes"
         value={minutes}
         size={2}
-        onWheel={e => disabled || onWheel(e, MINUTE)}
-        onKeyDown={e => handleKeyDown(e, 1, MINUTE)}
+        onWheel={e => handleWheel(e, { amount: MINUTE })}
+        onKeyDown={e => handleKeyDown(e, { index: 1, amount: MINUTE })}
+        onChange={(e, data) => handleChange(e, { ...data, index: 1, amount: MINUTE })}
       />
+
+      <div className="separator">
+        <div className="dot" style={{ backgroundColor: colour }} />
+        <div className="dot" style={{ backgroundColor: colour }} />
+      </div>
+
       <Number
         ref={refs[2]}
         disabled={disabled}
+        aria-label="seconds"
         value={seconds}
         size={2}
-        onWheel={e => disabled || onWheel(e, SECOND)}
-        onKeyDown={e => handleKeyDown(e, 2, SECOND)}
+        onWheel={e => handleWheel(e, { amount: SECOND })}
+        onKeyDown={e => handleKeyDown(e, { index: 2, amount: SECOND })}
+        onChange={(e, data) => handleChange(e, { ...data, index: 2, amount: SECOND })}
       />
     </div>
   );
@@ -84,6 +142,7 @@ const Clock = ({ time, disabled, onWheel, onKeyDown }) => {
 Clock.defaultProps = {
   onWheel: () => {},
   onKeyDown: () => {},
+  onChange: () => {},
   disabled: false
 };
 
@@ -91,7 +150,8 @@ Clock.propTypes = {
   time: PropTypes.number.isRequired,
   disabled: PropTypes.bool,
   onWheel: PropTypes.func,
-  onKeyDown: PropTypes.func
+  onKeyDown: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 export default Clock;
