@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { GlobalStateProvider } from '../hooks/useGlobalState';
 import Countdown from './Countdown';
 
@@ -77,13 +77,13 @@ describe('<Countdown>', () => {
   it('shifts focus to the start button when the last number is inputted', async () => {
     const { seconds, startButton } = setup();
     fireEvent.change(seconds, { target: { value: '13' } });
-    wait(() => expect(startButton).toHaveFocus());
+    waitFor(() => expect(startButton).toHaveFocus());
   });
 
   it('starts when the start button is pressed', async () => {
     const { seconds, startButton, remainingSeconds } = setup();
     fireEvent.change(seconds, { target: { value: '30' } });
     fireEvent.click(startButton);
-    wait(() => expect(remainingSeconds).toHaveValue('29'));
+    waitFor(() => expect(remainingSeconds).toHaveValue('29'));
   });
 });

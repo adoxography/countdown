@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent, wait } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import App from './App';
 import { GlobalStateProvider } from './hooks/useGlobalState';
 
@@ -23,6 +23,6 @@ describe('<App>', () => {
   it('changes colour', async () => {
     const { colourButton, digits } = setup();
     fireEvent.change(colourButton, { target: { value: '#00ff00' } });
-    wait(() => expect(digits[0]).toHaveStyle({ fill: '#00ff00' }));
+    waitFor(() => expect(digits[0]).toHaveStyle({ fill: '#00ff00' }));
   });
 });
