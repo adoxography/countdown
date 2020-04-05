@@ -1,7 +1,25 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, shell } = require('electron');
+const contextMenu = require('electron-context-menu');
+const version = require('../package.json').version;
 
 const path = require('path');
 const isDev = require('electron-is-dev');
+
+/**
+ * Set up the right click (context) menu for the entire application
+ */
+contextMenu({
+  menu: actions => [
+    {
+      label: 'Copyright © Canada Learning Code',
+      click: () => shell.openExternal('https://canadalearningcode.ca')
+    },
+    {
+      label: `v${version}`,
+      click: () => shell.openExternal('https://github.com/adoxography/countdown')
+    }
+  ]
+});
 
 /**
  * Creates the app window
