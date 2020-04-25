@@ -6,7 +6,7 @@
     "url": "https://github.com/adoxography"
   },
   "description": "Simple timer app that floats over everything else",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": true,
   "main": "public/electron.js",
   "homepage": "./",
